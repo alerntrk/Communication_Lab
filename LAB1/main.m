@@ -12,3 +12,9 @@ y=y1+y2;
 LPF=designfilt('lowpassfir','PassbandFrequency',cutt_off,'StopbandFrequency',stop,'SampleRate',fs);
 rec_y=filter(LPF,y);
 plot(t,rec_y);
+n=length(y);
+fre=fftshift(fft(y,n));
+f=(-(n-1)/2:(n-1)/2)*fs/(n);
+
+figure(2);
+stem(f,abs(fre));
