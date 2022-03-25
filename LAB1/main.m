@@ -1,0 +1,14 @@
+fs=1000;
+ts=1/fs;
+T=1;
+t=ts:ts:T;
+fm1=10,
+fm2=50;
+y1=cos(2*pi*fm1*t);
+y2=cos(2*pi*fm2*t);
+cutt_off=20;
+stop=30;
+y=y1+y2;
+LPF=designfilt('lowpassfir','PassbandFrequency',cutt_off,'StopbandFrequency',stop,'SampleRate',fs);
+rec_y=filter(LPF,y);
+plot(t,rec_y);
